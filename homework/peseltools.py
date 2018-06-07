@@ -11,17 +11,13 @@ def validate(pesel):
         if valid - True
         if not valid - Else
     """
-    #pesel = 85051410071
+
     pesel = str(pesel)
     birth_year = pesel[0:2]
     birth_month = pesel[2:4]
     birth_day = pesel[4:6]
 
     MONTH_LEN = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-
-    short_month = (birth_month == "04" or birth_month == "06" or birth_month == "09" or
-                   birth_month == "11") and birth_day == "31"
-    short_feb = birth_day == "29" or birth_day == "30" or birth_day == "31"
 
     if len(pesel) != 11:
         return False
@@ -103,10 +99,14 @@ def validate(pesel):
 
 def extract_personal_data(pesel):
     """
-    zwraca słownik o kluczach "birth_date": "data_ur" i "sex": "płeć" (male/female)
-    jeśli do funkcji wrzucimy niepoprawny PESEL, powinna zwrócić wyjątek ValueError
-    :param pesel:
-    :return:
+    Displays dictionary with data stored in PESEL and informs if PESEL is invalid
+
+    Args:
+        pesel
+
+    Returns:
+        if valid - dictionary with keys: "birth_date" and "sex"
+        if invalid - ValueError message
     """
     if (validate(pesel)) == False:
        raise ValueError("Numer PESEL jest niepoprawny.")
@@ -143,9 +143,13 @@ def extract_personal_data(pesel):
 
 def int_input(prompt):
     """
-    weryfikuje czy jako numer PESEL wpisywane są cyfry
-    Args:
+    Ensures that the input's type is integer.
 
+    Args:
+        prompt
+    Returns:
+        number - if int
+        ValueError - if empty or string
     """
     number = None
     while number is None:
