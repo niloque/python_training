@@ -135,9 +135,9 @@ def extract_personal_data(pesel):
         personal_info["birth_date"] = d_o_b
 
     if int(pesel[9]) % 2 == 0:
-        personal_info["sex"] = "Female"
+        personal_info["sex"] = "female"
     else:
-        personal_info["sex"] = "Male"
+        personal_info["sex"] = "male"
     return personal_info
 
 
