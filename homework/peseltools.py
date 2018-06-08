@@ -12,23 +12,22 @@ def validate(pesel):
         if not valid - Else
     """
 
+    if len(pesel) != 11:
+        return False
+
     pesel = str(pesel)
     birth_year = pesel[0:2]
     birth_month = pesel[2:4]
     birth_day = pesel[4:6]
-
     MONTH_LEN = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-    if len(pesel) != 11:
-        return False
+    check_digits = [9, 7, 3, 1, 9, 7, 3, 1, 9, 7]
+    sum_check = 0
+    for digit, value in enumerate(check_digits):
+        sum_check += (int(pesel[digit])) * value
+    sum_check = str(sum_check)
 
-    pesel_verification = 9 * int(pesel[0]) + 7 * int(pesel[1]) + 3 * int(pesel[2]) + 1 * int(pesel[3]) + \
-                   9 * int(pesel[4]) + 7 * int(pesel[5]) + 3 * int(pesel[6]) + 1 * int(pesel[7]) + \
-                   9 * int(pesel[8]) + 7 * int(pesel[9])
-
-    pesel_verification = str(pesel_verification)
-
-    if pesel_verification[2] != pesel[10]:
+    if sum_check[2] != pesel[10]:
         return False
 
     if birth_month[0] == "0" or birth_month[0] == "1":
@@ -95,7 +94,7 @@ def validate(pesel):
                 return False
             elif birth_month != "02" and (MONTH_LEN[(int(birth_month) - 1)] < int(birth_day) or int(birth_day) <= 0):
                 return False
-
+    return True
 
 def extract_personal_data(pesel):
     """
