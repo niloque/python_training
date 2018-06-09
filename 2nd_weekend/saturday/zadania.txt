@@ -1,0 +1,46 @@
+Zadanie 1:
+Napisac klase Rectangle reprezentujaca prostkat. Obiekty tej klasy powinny byc inicjalizowane poprzez podanie wymiarow prostokata. klasa powinna posiadac metody do obliczania pola i obwodu prostokata oraz metode draw() pozwalajca na jego wyswietlenie na ekranie.
+
+rectangle.py
+
+Zadanie 2:
+Napisac klase BankAccount symulujaca dzialanie prostego konta bankowego. Obiekty klasy BankAccount powinny przechowywac informacje o bilansie konta oraz posiadac metody do wplacania na nie i wyplacania z niego pieniedzy.
+
+bank_account.py
+
+Zadanie 3:
+Napisac klase Stock modelujaca prosty magazyn. Zadaniem klasy jest sledzenie stanu zapasow i wyeksponowanie metod sluzacych do odnawiania zasobow (dostawa) i ich redukowania (wysylka z magazynu). Dokladniej, klasa Stock powinna posiadac nastepujace metody:
+
+- resupply(product, count) - uzupelnia zapasy produktu product o liczbe sztuk count
+- withdraw(product, count) - usuwa z magazynu count sztuk produktu
+- available_items() - zwraca slownik, ktorego kluczami sa produkty, a wartosciami ilosc sztuk znajdujacych sie na magazynie
+
+Obiekty klasy Stock powinny byc inicjalizowane przez podanie (...)
+
+stock.py
+
+Zadanie 4:
+Napisac klase TabularData sluzaca do przechowywania danych w postaci tabeli. Obiekty tej klasy powinny przechowywac liste list, w ktorej kazda z wewnetrznych list posiada taka sama dlugosc. Koncepcyjnie, kazda z wew. list reprezentowac bedzie pojedynczy wiersz tabeli, a jej elementy - kolumny. Ponadto obiekty klasy TabularData powinny przechowywac informacje o nazwach kolumn oraz metody sluzace do odczytywania wiersza o zadanym numerze, odczytywania zadanej kolumny oraz wstawiania nowego wiersza.
+
+tabular_data.py
+
+Zadanie 5:
+Napisac funkcje odczytujaca plik i zapisujaca go pod zadana sciezke od tylu.
+
+file_path_reverse.py
+
+Zadanie 6:
+Napisac funkcje tworzaca histogram dlugosci linii w zadanym pliku tekstowym. Dokladniej, funkcja ta powinna, dla podanej w argumencie sciezki, zwrocic slownik, ktorego kluczami sa dlugosci linii wystepujacych w pliku, a wartosciami - liczba wystapien 
+
+
+Zadanie 7:
+Napisac funkcje wczytujaca plik CSV - to plik, w ktorym dane zostaly zapisane w postaci rekordow oddzielonych przecinkami. Kazdy wiersz powinien posiada tyle samo rekordow (w przeciwnym razie musimy rzucic wyjatkiem).
+
+read_csv.py (moje)
+read_csv2.py (Konrad)
+
+Zadanie 8: 
+Rozszerzyc klase Stock o mozliwosc zapisu stanu magazynu (dowolny format) do pliku, oraz mozliwosc jej pozniejszego odczytania.
+
+
+
