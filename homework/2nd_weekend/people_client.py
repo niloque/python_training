@@ -5,7 +5,6 @@ import json
 class PeopleClientError(Exception):
     pass
 
-
 class PeopleClient:
 
     FIELDS = ('first_name', 'last_name', 'email', 'phone', 'ip_address')
@@ -134,7 +133,6 @@ if __name__ == '__main__':
     #print(client.get_user_by_id(409))
     #print(client.query(first_name='Antoine'))
     #print(client.people_by_partial_ip(192.168))
-
 
     # Zadanie domowe - delete_by_id, delete_by_name, add_from_file
 
