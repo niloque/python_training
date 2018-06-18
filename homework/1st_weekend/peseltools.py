@@ -107,7 +107,7 @@ def extract_personal_data(pesel):
         if valid - dictionary with keys: "birth_date" and "sex"
         if invalid - ValueError message
     """
-    if (validate(pesel)) == False:
+    if validate(pesel) == False:
        raise ValueError("Numer PESEL jest niepoprawny.")
 
     pesel = str(pesel)
