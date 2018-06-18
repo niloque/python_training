@@ -1,5 +1,3 @@
-# wersja Konrada
-
 import requests
 import hashlib
 import json
