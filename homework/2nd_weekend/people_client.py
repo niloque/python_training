@@ -100,15 +100,24 @@ class PeopleClient:
         return response.json()
 
     def delete_by_name(self, first_name):
-        get_people = requests.get(self.base_url, params={'first_name': first_name}).json()
-        number = len(get_people)
-        for person in get_people:
-            requests.delete(self.base_url + str(person['id']))
-        if get_people.status_code == 404:
-            raise PeopleClientError('Unable to delete')
-        elif not get_people.ok:
+        response = requests.get(self.base_url, params={'first_name': first_name})
+        if response.status_code == 404:
+            raise PeopleClientError('No records with given name found.')
+        elif not response.ok:
             raise PeopleClientError(response.json()['error'])
-        return str(number) + ' record(s) removed.'
+        else:
+            get_people = response.json()
+            records = []
+            for person in get_people:
+                records.append(person['id'])
+            counter = 0
+            for id in range(len(records)):
+                if not (requests.delete(self.base_url + str(records[id]))).ok:
+                    raise PeopleClientError((requests.delete(self.base_url + str(records[id]))).json()['error'])
+                else:
+                    requests.delete(self.base_url + str(records[id]))
+                counter += 1
+        return counter #number of deleted records
 
     def add_from_file(self, my_file):
         headers = {'Authorization': 'Bearer ' + self.token}
@@ -137,5 +146,7 @@ if __name__ == '__main__':
     # Zadanie domowe - delete_by_id, delete_by_name, add_from_file
 
     #client.delete_by_id(19910351)
-    #print(client.delete_by_name(''))
+    #print('Liczba usuniętych rekordów:', client.delete_by_name('Jurek'))
     #print(client.add_from_file('records.json'))
+
+    #print(requests.get('http://polakow.eu:3000/people/', params={'first_name': "Kornel"}).json())
